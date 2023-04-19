@@ -1,4 +1,6 @@
 import spacy
+from flask import Flask, jsonify, request
+from flask_cors import CORS, cross_origin
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -49,4 +51,21 @@ def get_tags(sentence):
                     # print(tag, token.text, nlp(tag).similarity(token))
     return tags
 
-print(get_tags("i have review tomorrow and i am not ready"))
+
+app = Flask(__name__)
+
+@app.route('/', methods=['GET'])
+@cross_origin()
+def api():
+    # get the query from the url sentence
+    sentence = request.args.get('sentence')
+    assert sentence == str(sentence)
+
+    # get the tags from the sentence
+    tags = get_tags(sentence)
+    # return the tags as json
+    return jsonify(tags)
+    
+
+if __name__ == '__main__':
+    app.run(debug=True)
