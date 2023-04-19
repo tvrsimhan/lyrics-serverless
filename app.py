@@ -45,7 +45,7 @@ def get_tags(sentence):
     tags = []
     for tag in keywords:
         for token in tokens:
-            if nlp(tag).similarity(token) >= 0.6:
+            if nlp(tag).similarity(token) >= 0.7:
                 if token.text not in tags:
                     tags.append(token.text)
                     # print(tag, token.text, nlp(tag).similarity(token))
@@ -59,7 +59,7 @@ app = Flask(__name__)
 def api():
     # get the query from the url sentence
     sentence = request.args.get('sentence')
-    assert sentence == str(sentence)
+    # assert sentence == str(sentence)
 
     # get the tags from the sentence
     tags = get_tags(sentence)
