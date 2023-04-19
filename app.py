@@ -8,7 +8,7 @@ warnings.filterwarnings("ignore")
 # words = input()
 
 # Load a pre-trained spaCy model
-nlp = spacy.load("en_core_web_lg")
+nlp = spacy.load("en_core_web_md")
 
 # Define a list of POS tags that correspond to "content" words
 content_tags = ["ADJ", "NOUN", "VERB", "ADV"]
