@@ -46,7 +46,7 @@ def get_tags(sentence):
     tags = []
     for tag in keywords:
         for token in tokens:
-            if nlp(tag).similarity(token) >= 0.7:
+            if nlp(tag).similarity(token) >= 0.8:
                 if token.text not in tags:
                     tags.append(token.text)
                     # print(tag, token.text, nlp(tag).similarity(token))
