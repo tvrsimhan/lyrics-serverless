@@ -61,6 +61,9 @@ def api():
     sentence = request.args.get('sentence')
     # assert sentence == str(sentence)
 
+    if sentence == None or len(sentence) == 0:
+        return "Send query param ?sentence="
+
     # get the tags from the sentence
     tags = get_tags(sentence)
     # return the tags as json
